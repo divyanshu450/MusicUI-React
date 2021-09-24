@@ -1,17 +1,33 @@
 import React from 'react'
+import "../Components/mediaitems.css"
+import { useState } from 'react';
 
 export default function Headbar(props) {
+
+    const [query,setQuery] = useState("");
+    const onsubmit = (e) => {
+        e.preventDefault();
+        
+        props.search(query);
+    }
+
+
     return (
-        <div className="Conatainer">
+        <div className="Container">
             <div className="Container-head">
                 <h1>{props.user}</h1>
-                <input type="text" placeholder="Search Music.." name="search"/>
-                <button type ="submit"><i className ="fa fa-search"/></button>
+                
+                <input type="text" placeholder="Search Music.." name="search" value={query} onChange={(e)=>{setQuery(e.target.value)}}>
+                </input>
+                
+                
+                <button type ="submit"><i className ="fa fa-search"/> 
+                <img className="searchimage" src="http://localhost:3000/search_logo.jpg"/>
+                </button>
+                <br></br>
             </div>
             
-            <div className="Songs">
-
-            </div>
+            
         </div>
     )
 }
